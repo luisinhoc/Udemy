@@ -60,3 +60,37 @@ const carroSonix = new Sonix("Sonix", "85959", 5);
 console.log(carroSonix)
 console.log(carroSonix.andar())
 console.log(carroSonix.abrirTectoSolar())
+
+// metodos estaticos
+
+
+class Carro{
+  static abrirPorta(){
+    console.log("A abrir a porta")
+  }
+
+  static fecharPorta(){
+    console.log("Fechar porta")
+  }
+}
+
+Carro.abrirPorta()
+Carro.fecharPorta()
+
+// nome, numero de controlos, tipo de saida de video e midia
+// vantagens WeakMap
+const propriedades = new WeakMap();
+
+class Jogo{
+  constructor(nome,controlos,saida,midia){
+    propriedades.set(this, {nome,controlos,saida,midia})
+  }
+
+  recuperarPropriedade(propriedade){
+    return propriedades.get(this)[propriedade]
+  }
+}
+
+const xbox360 = new Jogo('xbox360', 4, "hdmi", "dvd")
+
+console.log(xbox360.recuperarPropriedade("nome"))
